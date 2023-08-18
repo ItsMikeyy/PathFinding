@@ -1,0 +1,69 @@
+
+
+html {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+}
+header {
+    display: flex;
+    width: 100vw;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1rem;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+}
+
+.container {
+    padding: 0 20px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.container > div {
+    padding: 10px;
+}
+
+.btn {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color:#33bdef;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:25px;
+	font-weight:bold;
+	padding:19px 62px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+
+#option {
+    padding:20px 62px;
+    border-radius:6px;
+	border:1px solid #057fd0;
+    font-size: 1rem;
+}
+.alt-btn {
+    padding:15px 31px;
+}
