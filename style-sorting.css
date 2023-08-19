@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+    background-color: white;
+}
+header {
+    display: flex;
+    justify-content: center;
+    
+}
+header > a {
+    color: black;
+    
+    padding:1rem 2rem;
+}
+main {
+    margin:  0;
+    padding: 0;
+}
+/* .p5Canvas {
+    display: block;
+} */
+
+.container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
