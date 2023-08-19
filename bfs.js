@@ -1,14 +1,14 @@
 async function bfs(y,x) {
-    let queue = []
-    let prev = Array(ROWS)
+    let queue = [];
+    let prev = Array(ROWS);
     for (let i = 0; i < COLS; i++) {
-        prev[i] = Array(COLS)
+        prev[i] = Array(COLS);
     }
-    queue.push([y,x])
-    grid[y][x] = 1
+    queue.push([y,x]);
+    grid[y][x] = 1;
 
     while (queue.length > 0){
-        let [curY,curX] = queue.shift()
+        let [curY,curX] = queue.shift();
         fill("red");
         rect(curX*(HEIGHT/ROWS), curY*(WIDTH/COLS),(WIDTH/COLS));
         
@@ -20,11 +20,11 @@ async function bfs(y,x) {
         for (let i = 0; i < dirs.length; i++) {
             let [dy,dx] = dirs[i];
             if (dy + curY < 0 || dy + curY >= grid.lengtvbh  || dx + curX < 0 || dx + curX >= grid.length || grid[curY+dy][curX+dx] == 1) {
-                continue
+                continue;
             }
-            queue.push([dy+curY,dx+curX])
-            grid[dy+curY][dx+curX] = 1
-            prev[dy+curY][dx+curX] = [curY,curX]
+            queue.push([dy+curY,dx+curX]);
+            grid[dy+curY][dx+curX] = 1;
+            prev[dy+curY][dx+curX] = [curY,curX];
             fill("green");
             rect((curX+dx)*(HEIGHT/ROWS), (curY+dy)*(WIDTH/COLS),(WIDTH/COLS));
             await sleep(playbackSpeed);
@@ -34,13 +34,13 @@ async function bfs(y,x) {
 }
 
 function reconstructPath(prev){
-    let path = []
-    var x = grid.length - 1
-    var y = grid.length - 1
-    path.push([y,x])
+    let path = [];
+    var x = grid.length - 1;
+    var y = grid.length - 1;
+    path.push([y,x]);
     while (y != 0 || x != 0) {
-        [y, x] = prev[y][x]
-        path.push([y,x])
+        [y, x] = prev[y][x];
+        path.push([y,x]);
     }
-    return path.reverse()
+    return path.reverse();
 }

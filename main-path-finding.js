@@ -1,81 +1,81 @@
 const WIDTH = window.innerHeight - 200;
 const HEIGHT = window.innerHeight - 200;
-let ROWS 
-let COLS
-let grid
-let dirs = [[0,-1],[-1,0],[0,1],[1,0]]
+let ROWS; 
+let COLS;
+let grid;
+let dirs = [[0,-1],[-1,0],[0,1],[1,0]];
 let targtReached = false;
 let hasStart = false
 
 let playbackSpeed = 100
-let val = Number(document.getElementById("size").value)
+let val = Number(document.getElementById("size").value);
 document.getElementById("run").addEventListener("click",() => {
     if (!hasStart) {
-        let val = document.getElementById("option").value
+        let val = document.getElementById("option").value;
         if (val == "DFS"){
-            startDFS()
+            startDFS();
         }
         else if (val == "BFS") {
-            startBFS()
+            startBFS();
         }
     }
-})
+});
 
 document.getElementById("regenerate").addEventListener("click",() => {
     if (!hasStart) {
         setGrid();
     }
-})
+});
 
 document.getElementById("probability").addEventListener("input", () => {
     if (!hasStart) {
         setGrid();
     }
-})
+});
 
 document.getElementById("speed").addEventListener("input", () => {
    
     playbackSpeed = Math.abs(Number(document.getElementById("speed").value)) 
-})
+});
 
 document.getElementById("size").addEventListener("input", () => {
     val = Number(document.getElementById("size").value)
     
     createGrid();
-    drawGrid()
+    drawGrid();
 })
 
 function setup() {
     createCanvas(WIDTH,HEIGHT);
     createGrid();
-    drawGrid()
+    drawGrid();
     
 }
 
 async function startDFS() {
     hasStart = true;
-    let path = await dfs(0,0,[])
+    let path = await dfs(0,0,[]);
     if (targtReached) {
-        await drawPath(path)
+        await drawPath(path);
     }
     hasStart = false;
-    targtReached = false
+    targtReached = false;
 }
 
 async function startBFS() {
     hasStart = true;
-    let path = await bfs(0,0)
-    path = reconstructPath(path)
+    let path = await bfs(0,0);
+    path = reconstructPath(path);
     if (targtReached) {
-        await drawPath(path)
+        await drawPath(path);
     }
     hasStart = false;
-    targtReached = false
+    targtReached = false;
 }
 
 function setGrid() {
     createGrid();
-    drawGrid()
+    drawGrid();
 }
 
 
