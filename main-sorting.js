@@ -262,7 +262,7 @@ function sleep(delay) {
     return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-function windowResized() {
+function windowResized() { 
     resizeCanvas(windowWidth, windowHeight);
   }
 
