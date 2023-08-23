@@ -65,8 +65,9 @@ async function startDFS() {
 async function startBFS() {
     hasStart = true;
     let path = await bfs(0,0);
-    path = reconstructPath(path);
+    
     if (targtReached) {
+        path = reconstructPath(path);
         await drawPath(path);
     }
     hasStart = false;
