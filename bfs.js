@@ -19,7 +19,7 @@ async function bfs(y,x) {
         await sleep(playbackSpeed);
         for (let i = 0; i < dirs.length; i++) {
             let [dy,dx] = dirs[i];
-            if (dy + curY < 0 || dy + curY >= grid.lengtvbh  || dx + curX < 0 || dx + curX >= grid.length || grid[curY+dy][curX+dx] == 1) {
+            if (dy + curY < 0 || dy + curY >= grid.length  || dx + curX < 0 || dx + curX >= grid.length || grid[curY+dy][curX+dx] == 1) {
                 continue;
             }
             queue.push([dy+curY,dx+curX]);

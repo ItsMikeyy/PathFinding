@@ -1,5 +1,5 @@
-const WIDTH = window.innerHeight - 200;
-const HEIGHT = window.innerHeight - 200;
+const WIDTH = window.innerHeight - 250;
+const HEIGHT = window.innerHeight - 250;
 let ROWS; 
 let COLS;
 let grid;
