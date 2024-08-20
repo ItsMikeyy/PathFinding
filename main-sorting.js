@@ -1,23 +1,27 @@
 let rectArray = [];
 let tmpArray = [];
 
+//Wait for run button click
 document.getElementById("run").addEventListener("click", chooseSort);
 
+
+//p5 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight-55);
 }
 
+//p5
 function draw() {
     background(255);
     for(let i = 0; i < rectArray.length; i++) {
         if (rectArray[i].status == 1) {
-            fill("red");
+            fill("red");    //active
         } 
         else if (rectArray[i].status == 2) {
-            fill("blue");
+            fill("blue");   //pivot
         }
         else {
-            fill("black");
+            fill("black"); // not active
         }
         rect(rectArray[i].x,rectArray[i].y,rectArray[i].w,rectArray[i].h);
     }
@@ -25,6 +29,7 @@ function draw() {
 
 }
 
+//Get sort from dropdown
 async function chooseSort() {
     createArray();
     await sleep(1000);
@@ -47,10 +52,11 @@ function createArray() {
     if (rectArray.length > 0) {
         rectArray = [];
     }
+    //array size taken from input
     let amt = Number(document.getElementById("amount").value);
     for (let i =0; i < amt; i++) {
         value = Math.floor(Math.random() * (windowHeight - 50) + 1);
-        let width = windowWidth / amt;
+        let width = windowWidth / amt;  
         let height = value;
         let x = (windowWidth / amt) * i;
         let y = windowHeight - height -10;
@@ -71,10 +77,15 @@ async function bubbleSort() {
 
     for(let i = 0; i < rectArray.length; i++) {
         for( let j = 0; j < rectArray.length - i - 1; j++) {
+            // if cur < next swap
             if (rectArray[j].value > rectArray[j+1].value) {
                 await swap(j,  j+1);
+
+                //Set to current (1) red 
                 rectArray[j + 1].status = 1;
                 await sleep(10);
+
+                //Set to normal (0) white 
                 rectArray[j + 1].status = 0;
                 
             }
@@ -84,6 +95,7 @@ async function bubbleSort() {
 
 async function selectionSort() {
     let j = 0;
+    //Look for smallest item
     for (let i = 0; i < rectArray.length; i ++) {
         let min = i;
         for(let j = i; j < rectArray.length; j++) {
@@ -110,9 +122,12 @@ async function quickSort(left,right) {
 async function partition(left, right) {
     let i = left;
     let j = right - 1;
+    //Using right element as pivot
     let pivot = rectArray[right].value;
     rectArray[j].status = 1;
     rectArray[i].status = 1;
+
+    //Set to pivot (2)
     rectArray[right].status = 2;
     await sleep(1);
 
@@ -124,8 +139,6 @@ async function partition(left, right) {
             i++;
             rectArray[i].status = 1;
             await sleep(10);
-
-
         }
         while (j > left && rectArray[j].value >= pivot) {
             rectArray[j].status = 0;
@@ -136,11 +149,13 @@ async function partition(left, right) {
 
 
         }
+        //Swap both elements
         if (i < j) {
             await sleep(1);
             await swap(i,j);
         }
     }
+    //Swap pivot if i > pivot
     if (rectArray[i].value > pivot) {
         rectArray[right].status = 0;
         await sleep(10);
@@ -175,9 +190,9 @@ async function merge(arr, leftArray, rightArray) {
     let k = 0;
     let count = 0;
     while (i < leftArray.length && j < rightArray.length) {
+        //Smaller of left and right gets put in arr
         if (leftArray[i].value <= rightArray[j].value) {
             tmp = arr[k];
-            // await mergeSwap(i, k, leftArray, arr)
             arr[k] = leftArray[i];
             arr[k].status = 1;
             await sleep(10);
@@ -245,6 +260,7 @@ async function swapPos(arr, count) {
 
 
 async function swap(e1, e2) {
+    //Swapping values of object
     tmp = rectArray[e1].y;
     rectArray[e1].y = rectArray[e2].y;
     rectArray[e2].y = tmp;
